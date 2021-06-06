@@ -5,7 +5,7 @@ using namespace cimg_library;
 
 Canvas::Canvas(int x, int y) : _x(x), _y(y)
 {
-    //initialize image of dimension width, height with white bg
+    //initialize image of dimension x, y with white bg
     _img = CImg<unsigned int>(x, y, 1, 3, 255);
 }
 
