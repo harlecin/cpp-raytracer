@@ -1,5 +1,10 @@
 # Raytracer in C++
 
+pixel computer screen
+color model
+canvas, net, scene
+draw on canvas, what you see through view port
+
 # Setup
 
 # Links

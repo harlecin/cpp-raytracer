@@ -18,3 +18,5 @@ class Canvas {
 };
 
 // TODO: Can I remove std::array and still use {} in function call somehow? https://stackoverflow.com/questions/29360555/c-passing-an-array-directly-into-a-function-without-initializing-it-first
+// TODO: Add is_on_canvas() check to put_pixel()
+// TODO: Does CImg return a pointer to the data?

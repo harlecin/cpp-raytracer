@@ -34,8 +34,8 @@ void Canvas::put_pixel(int x, int y, std::array<int, 3> rgb)
     auto rgb_clamped = clamp_colors(rgb);
 
     //Put pixel relative to center of canvas
-    int s_x = this->_x/2 + x;
-    int s_y = this->_y/2 - y;
+    int s_x = this->_x / 2 + x;
+    int s_y = this->_y / 2 - y;
 
     for (int i = 0; i <= 2; i++)
     {
@@ -45,6 +45,6 @@ void Canvas::put_pixel(int x, int y, std::array<int, 3> rgb)
 
 void Canvas::display()
 {
+    
     _img.display("Simple Raytracer");
 }
-
