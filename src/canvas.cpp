@@ -3,10 +3,10 @@
 
 using namespace cimg_library;
 
-Canvas::Canvas(int x, int y) : _x(x), _y(y)
+Canvas::Canvas(int Cw, int Ch) : _Cw(Cw), _Ch(Ch)
 {
     //initialize image of dimension x, y with white bg
-    _img = CImg<unsigned int>(x, y, 1, 3, 255);
+    _img = CImg<unsigned int>(Cw, Ch, 1, 3, 255);
 }
 
 std::array<int, 3> Canvas::clamp_colors(std::array<int, 3> rgb)
@@ -28,14 +28,14 @@ std::array<int, 3> Canvas::clamp_colors(std::array<int, 3> rgb)
     return rgb;
 }
 
-void Canvas::put_pixel(int x, int y, std::array<int, 3> rgb)
+void Canvas::put_pixel(int Cx, int Cy, std::array<int, 3> rgb)
 {
 
     auto rgb_clamped = clamp_colors(rgb);
 
     //Put pixel relative to center of canvas
-    int s_x = this->_x / 2 + x;
-    int s_y = this->_y / 2 - y;
+    int s_x = this->_Cw / 2 + Cx;
+    int s_y = this->_Ch / 2 - Cy;
 
     for (int i = 0; i <= 2; i++)
     {

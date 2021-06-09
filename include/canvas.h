@@ -7,12 +7,12 @@ using namespace cimg_library;
 
 class Canvas {
     public:
-        Canvas(int x, int y);
-        void put_pixel(int x, int y, std::array<int, 3> rgb);
+        Canvas(int Cw, int Ch);
+        void put_pixel(int Cx, int Cy, std::array<int, 3> rgb);
         void display();
+        int _Cw;
+        int _Ch;
     private:
-        int _x;
-        int _y;
         CImg<unsigned int> _img;
         std::array<int, 3> clamp_colors(std::array<int, 3> rgb);
 };
