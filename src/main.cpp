@@ -4,6 +4,7 @@
 #include "raytracer.h"
 #include <iostream>
 #include <array>
+#include <climits>
 
 int main() {
     int Cw = 640;

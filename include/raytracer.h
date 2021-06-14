@@ -8,12 +8,14 @@
 std::array<double, 3> canvas_to_viewport(int x, int y, int vw, int vh, int d, int Cw, int Ch);
 
 std::array<int, 3> trace_ray(std::vector<Sphere> scene, std::array<double, 3> O, std::array<double, 3> D, int t_min, int t_max);
+std::array<double, 2> intersect_ray_sphere(std::array<double, 3> O, std::array<double, 3> D, Sphere sphere);
+
+//class Raytracer {
+//    public:
+//        Raytracer(Canvas canvas, Camera camera);
+//    private:
+//        Canvas _canvas;
+//        Camera _camera;
+//};
 
 
-class Raytracer {
-    public:
-        Raytracer(Canvas canvas, Camera camera);
-    private:
-        Canvas _canvas;
-        Camera _camera;
-};

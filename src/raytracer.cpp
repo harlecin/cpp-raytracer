@@ -3,6 +3,7 @@
 #include "scene.h"
 #include <array>
 #include <climits>
+#include <math.h>
 
 std::array<double, 3> canvas_to_viewport(int x, int y, int vw, int vh, int d, int Cw, int Ch)
 {
@@ -20,14 +21,33 @@ std::array<int, 3> trace_ray(std::vector<Sphere> scene, std::array<double, 3> O,
     double closest_t = INT_MAX;
     double closest_sphere;
 
-    return std::array<double, 3>{0, 0, 0};
-    //for (auto sphere : scene)
-    //{
-    //    std::array<double, 2> t = intersect_ray_sphere();
-    //}
+    for (auto sphere : scene)
+    {
+        std::array<double, 2> t = intersect_ray_sphere(O, D, sphere);
+    }
+    return std::array<int, 3>{0, 0, 0};
 }
 
-//Raytracer::Raytracer(Canvas canvas, Camera camera) {
-//    this->_camera = camera;
-//    this->_canvas = canvas;
-//}
+std::array<double, 2> intersect_ray_sphere(std::array<double, 3> O, std::array<double, 3> D, Sphere sphere) {
+    auto r = sphere._radius;
+    std::array<double,3> CO = {
+        O[0] - sphere._center[0],
+        O[1] - sphere._center[1],
+        O[2] - sphere._center[2],
+    };
+
+    double a = D[0]*D[0] + D[1]*D[1] + D[2]*D[2];
+    double b = 2*(CO[0]*D[0] + CO[1]*D[1] + CO[2]*D[2]);
+    double c = CO[0]*CO[0] + CO[1]*CO[1] + CO[2]*CO[2] - sphere._radius * sphere._radius;
+
+    double discriminant = b*b - 4*a*c;
+    if(discriminant < 0) {
+        return std::array<double, 2> {INT_MAX, INT_MAX};
+    }
+
+    double t1 = (-b + sqrt(discriminant)/(2*a));
+    double t2 = (-b - sqrt(discriminant)/(2*a));
+
+    return std::array<double, 2> {t1, t2};
+    
+}
