@@ -10,12 +10,6 @@ std::array<double, 3> canvas_to_viewport(int x, int y, int vw, int vh, int d, in
     return std::array<double, 3>{1.0 * x * vw / Cw, 1.0 * y * vh / Ch, 1.0 * d};
 }
 
-//TODO: finish!
-std::array<double, 2> intersect_ray_sphere()
-{
-    return std::array<double, 2>{1, 2};
-}
-
 std::array<int, 3> trace_ray(std::vector<Sphere> scene, std::array<double, 3> O, std::array<double, 3> D, int t_min, int t_max)
 {
     double closest_t = INT_MAX;
