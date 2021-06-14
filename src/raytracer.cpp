@@ -19,13 +19,26 @@ std::array<double, 2> intersect_ray_sphere()
 std::array<int, 3> trace_ray(std::vector<Sphere> scene, std::array<double, 3> O, std::array<double, 3> D, int t_min, int t_max)
 {
     double closest_t = INT_MAX;
-    double closest_sphere;
+    Sphere closest_sphere({0, 0, 0}, 0, {0,0,0});
 
     for (auto sphere : scene)
     {
         std::array<double, 2> t = intersect_ray_sphere(O, D, sphere);
+        if (t_min <= t[0] & t[0] < t_max & t[0] < closest_t) {
+            closest_t = t[0];
+            closest_sphere = sphere;
+        }
+        if (t_min <= t[1] & t[1] < t_max & t[1] < closest_t) {
+            closest_t = t[2];
+            closest_sphere = sphere;
+        }
     }
-    return std::array<int, 3>{0, 0, 0};
+    if (closest_sphere._radius == 0) {
+        return std::array<int, 3>{0, 0, 0};
+    }
+
+    return closest_sphere._color;
+
 }
 
 std::array<double, 2> intersect_ray_sphere(std::array<double, 3> O, std::array<double, 3> D, Sphere sphere) {
